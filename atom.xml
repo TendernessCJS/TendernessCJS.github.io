@@ -5,9 +5,9 @@
   <subtitle>2 Infinity N Beyond</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://TendernessCJS.github.io/"/>
   <updated>2019-05-23T14:13:28.769Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://TendernessCJS.github.io/</id>
   
   <author>
     <name>Tenderness</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/05/23/hello-world/"/>
-    <id>http://yoursite.com/2019/05/23/hello-world/</id>
+    <link href="https://TendernessCJS.github.io/2019/05/23/hello-world/"/>
+    <id>https://TendernessCJS.github.io/2019/05/23/hello-world/</id>
     <published>2019-05-23T14:13:28.769Z</published>
     <updated>2019-05-23T14:13:28.769Z</updated>
     
