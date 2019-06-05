@@ -1,0 +1,1051 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="CSS - 常用属性以及继承和优先级, HTML CSS JavaScript">
+    <meta name="description" content="字体(font)属性
+设置字体大小
+语法: font-size : 具体数值 + 单位
+常用单位: px、em、rem、%
+em 和 % 是基于父元素字体大小进行计算, rem则基于html字体大小进行计算
+
+设置文字的粗细
+语法: fon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CSS - 常用属性以及继承和优先级 | Mon</title>
+    <link rel="icon" type="image/png" href="medias/ico.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/hi.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mon</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="medias/hi.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mon</div>
+        <div class="logo-desc">
+            
+            Some Essays about H5
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/TendernessCJS" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>My GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/TendernessCJS" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="My GitHub" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        CSS - 常用属性以及继承和优先级
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/styles/" target="_blank">
+                                <span class="chip bg-color">styles</span>
+                            </a>
+                        
+                            <a href="/tags/inheritance/" target="_blank">
+                                <span class="chip bg-color">inheritance</span>
+                            </a>
+                        
+                            <a href="/tags/priority/" target="_blank">
+                                <span class="chip bg-color">priority</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CSS/" class="post-category" target="_blank">
+                                CSS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-12-21
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.9k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="字体-font-属性"><a href="#字体-font-属性" class="headerlink" title="字体(font)属性"></a>字体(font)属性</h2><ol>
+<li><p><strong>设置字体大小</strong></p>
+<p>语法: <code>font-size : 具体数值 + 单位</code></p>
+<p>常用单位: <code>px</code>、<code>em</code>、<code>rem</code>、<code>%</code></p>
+<font color="deepskyblue"><strong>em</strong> 和 <strong>%</strong> 是基于父元素字体大小进行计算, <strong>rem</strong>则基于html字体大小进行计算</font>
+</li>
+<li><p><strong>设置文字的粗细</strong></p>
+<p>语法: <code>font-weight : val</code></p>
+<p>取值: <code>n*100(1&lt;=n&lt;=9)</code>、<code>normal(400)</code>、<code>bold(700)</code></p>
+</li>
+<li><p><strong>设置文字的行高</strong></p>
+<p>语法: <code>line-height : val</code></p>
+<p><font color="deepskyblue">文字垂直方向居中:</font> <code>line-height = 容器 height</code></p>
+</li>
+<li><p><strong>设置字体的样式</strong></p>
+<p>语法: <code>font-style : val</code></p>
+<p>取值: <code>normal</code>(默认)、<code>italic</code>(斜体)、<code>oblique</code>(倾斜, 针对没有斜体的文字)</p>
+</li>
+<li><p><strong>设置英文字母大小写</strong></p>
+<p>语法: <code>font - variant : val</code></p>
+<p>取值: <code>normal</code>(默认)、<code>small-caps</code>(小型大写字母)</p>
+</li>
+<li><p><strong>设置字体</strong></p>
+<p>语法: <code>font - family : val</code></p>
+<p>注意点: </p>
+<ol>
+<li>可设置多个值, 用( <strong>,</strong> )逗号隔开, 解决兼容, 一直找到可用字体</li>
+<li>字体名称包含空格, 它必须加上引号</li>
+</ol>
+</li>
+<li><p><strong>自定义字体(加载网络字体)</strong></p>
+<p>语法:</p>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 定义(引入)字体 */</span>
+<span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span> 
+    <span class="token property">font-family</span><span class="token punctuation">:</span> 自定义字体名称<span class="token punctuation">;</span> 
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('Sansation_Light.ttf')</span>, 
+         <span class="token url">url('Sansation_Light.eot')</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* IE9 */</span> 
+<span class="token punctuation">}</span> 
+
+<span class="token comment" spellcheck="true">/* 使用字体 */</span>
+<span class="token selector">选择器 </span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> 自定义字体名称<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>其他可选属性:</p>
+<ol>
+<li><code>font-stretch</code> 设置字体改如何被拉长</li>
+<li><code>font-style</code> 设置字体样式</li>
+<li><code>font-weight</code> 设置字体粗细</li>
+<li><code>unicode-range</code> 设置字体支持的Unicode字符范围</li>
+</ol>
+</li>
+<li><p><strong>font整合属性</strong></p>
+<p>语法: <code>font: [font-style] [font-variant] [font-weight] font-size[/line-height] font-family</code></p>
+<p>注意点:</p>
+<ol>
+<li>需要按顺序设置</li>
+<li><code>font-size</code> 和 <code>font-family</code> 的值是必需的</li>
+<li><code>line-height</code> 必须紧跟着 <code>font-size</code> 通过 <code>/</code> 连接</li>
+</ol>
+</li>
+</ol>
+<h2 id="文本-text-属性"><a href="#文本-text-属性" class="headerlink" title="文本(text)属性"></a>文本(text)属性</h2><ol>
+<li><p><strong>设置文本水平对齐方式</strong></p>
+<p>语法: <code>text-align : center|left|right|justify(两端对齐)</code></p>
+</li>
+<li><p><strong>设置文本装饰线</strong></p>
+<p>语法: <code>text-decoration : val</code></p>
+<p>取值: <code>none|underline|overline|line-through|blnk(闪烁文本)</code></p>
+</li>
+<li><p><strong>设置文本首行缩进</strong></p>
+<p>语法: <code>text-indent : 数值 + 单位</code></p>
+<p>注意点:</p>
+<ol>
+<li>支持负数, 表示向左缩进</li>
+<li>常用单位 <strong>em</strong> , 表示缩进多少个字符</li>
+</ol>
+</li>
+<li><p><strong>设置文本阴影</strong></p>
+<p>语法: <code>text-shadow : x y [blur] [color]</code></p>
+<p>注意点:</p>
+<ol>
+<li>必须值: <strong>x</strong> — 水平位置  <strong>y</strong> — 垂直位置,  均支持负值</li>
+<li>可选值: <strong>blur</strong> — 阴影距离(仅正值)  <strong>color</strong> — 阴影颜色(默认跟随字体颜色)</li>
+<li>需要按顺序设置, <strong>color</strong> 可放在<strong>最前</strong>或者<strong>最后</strong></li>
+<li>可添加多个阴影,  阴影列表用 ( <strong>,</strong> ) 逗号隔开</li>
+<li>阴影不占实际空间, 即<strong>不会影响页面布局</strong></li>
+</ol>
+</li>
+<li><p><strong>设置文本大小写</strong></p>
+<p>语法: <code>text-transform : val</code></p>
+<p>取值: <code>none</code>(默认)、<code>capitalize</code>(首字母大写)、<code>uppercase</code>(全大写)、<code>lowercase</code>(全小写)</p>
+</li>
+<li><p><strong>设置字符间距</strong></p>
+<p>语法: <code>letter-spacing : 数值 + 单位</code></p>
+<p>注意点: 默认<code>normal</code>, 支持负值</p>
+</li>
+<li><p><strong>设置单词间距</strong></p>
+<p>语法: <code>word-spacing : 数值 + 单位</code></p>
+<p>注意点: 默认<code>normal</code>, 支持负值, <font color="deepskyblue">需要手动用空格区分单词</font></p>
+</li>
+<li><p><strong>设置当文本溢出容器时处理方式</strong></p>
+<p>语法: <code>text-overflow : val</code></p>
+<p>取值: <code>clip</code>(默认值, 修剪)、<code>ellipsis</code>(省略号代替修剪部分)、<code>string</code>(指定字符串代替)</p>
+</li>
+<li><p><strong>设置自动换行的处理方式</strong></p>
+<p>语法: <code>word-break : val</code></p>
+<p>取值: <code>normal</code>(默认)、<code>break-all</code>(允许单词内换行)、<code>keep-all</code>(只能在摆角空格/连字符处换行)</p>
+</li>
+<li><p><strong>允许长内容(单词/URL)自动转行</strong></p>
+<p>语法: <code>word-wrap : normal|break-word(允许)</code></p>
+</li>
+<li><p><strong>设置元素内空白的处理方式</strong></p>
+<p>语法:  <code>white-space : val</code></p>
+<p>取值:</p>
+<ol>
+<li><code>normal</code> 默认忽略空白</li>
+<li><code>pre</code> 保留空白, 与<code>&lt;pre&gt;</code>标签类似</li>
+<li><code>nowrap</code> 不换行, 直到遇到 <code>&lt;br&gt;</code> 标签</li>
+<li><code>pre-wrap</code> 保留空白符序列, 正常换行</li>
+<li><code>pre-line</code> 合并空白符序列, 保留换行符</li>
+</ol>
+</li>
+</ol>
+<h3 id="文本单行忽略显示"><a href="#文本单行忽略显示" class="headerlink" title="文本单行忽略显示"></a>文本单行忽略显示</h3><pre class=" language-css"><code class="language-css"><span class="token property">white-space</span> <span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token property">text-overflow</span> <span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="列表-list-style-属性"><a href="#列表-list-style-属性" class="headerlink" title="列表(list-style)属性"></a>列表(list-style)属性</h2><ol>
+<li><p><strong>设置项目标志的类型</strong></p>
+<p>语法: <code>list-style-type : typename</code></p>
+<p>常用属性值: <code>none</code>(无标记)、<code>disc</code>(实心圆)、<code>circle</code>(空心圆)、<code>square</code>(实心方块)、<code>decimal</code>(数字)</p>
+</li>
+<li><p><strong>设置项目标记的位置</strong></p>
+<p>语法: <code>list-style-position : outside(默认)|inside</code></p>
+<p>效果:</p>
+<ol>
+<li><p><code>outside</code> : 列表项目标记放置在文本以外, 且环绕文本不根据标记对齐</p>
+</li>
+<li><p><code>inside</code> : 列表项目标记放置在文本以内, 且环绕文本根据标记对齐</p>
+<p><img src="/images/list-style-position.png" alt="项目标志位置"></p>
+</li>
+</ol>
+</li>
+<li><p><strong>设置图片项目标志</strong></p>
+<p>语法: <code>list-style-image : 图片URL</code></p>
+<p>注意点: 以防图像不可用, 使用图片项目标志时, 建议设置 <code>list-style-type</code></p>
+</li>
+<li><p><strong>list-style整合属性</strong></p>
+<p>语法: <code>list-style : list-style-type list-style-position list-style-image</code></p>
+<p>注意点: 需要按顺序设置, 但可不设置其中某个属性, 表示该属性使用默认值</p>
+</li>
+</ol>
+<h2 id="表格相关样式"><a href="#表格相关样式" class="headerlink" title="表格相关样式"></a>表格相关样式</h2><ol>
+<li><p><strong>设置单元格边框是否合并</strong></p>
+<p>语法: <code>border-collapse : separate(默认分开)|collapse(合并)</code></p>
+</li>
+<li><p><strong>设置相邻单元格边框之间的距离</strong></p>
+<p>语法: <code>border-spacing : x [y]</code></p>
+<p>注意: </p>
+<ol>
+<li>需要带单位, 只设一个值表示水平和垂直方向的间距一致</li>
+<li>当<code>border-collapse</code> 设置为 <code>collapse</code> 时, 该属性不起作用</li>
+</ol>
+</li>
+<li><p><strong>设置表格标题(<code>&lt;caption&gt;标签</code>)的位置</strong></p>
+<p>语法: <code>caption-side : top(默认)|bottom</code></p>
+</li>
+<li><p><strong>隐藏空单元格</strong></p>
+<p>语法: <code>empty-cells : show(默认)|hide(隐藏)</code></p>
+<p>注意点: <code>empty-cells : hide</code> 仅在 <code>border-collapse : separate</code> 时生效</p>
+</li>
+<li><p><strong>设置表格布局</strong></p>
+<p>语法: <code>table-layout : auto|fixed</code></p>
+<p>注意点:</p>
+<ol>
+<li><code>auto</code> 默认值, 列宽根据单元格内容设置</li>
+<li><code>fixed</code> 列宽根据表格宽度设置</li>
+</ol>
+</li>
+</ol>
+<h2 id="设置颜色"><a href="#设置颜色" class="headerlink" title="设置颜色"></a>设置颜色</h2><ol>
+<li><p><strong>前景颜色</strong></p>
+<p>语法: <code>color : 颜色</code></p>
+<p>注意: 前景包括 <strong>文本</strong> 、<strong>边框</strong>、<strong>阴影</strong></p>
+</li>
+<li><p><strong>背景颜色</strong></p>
+<p>语法: <code>background-color : 颜色</code></p>
+</li>
+<li><p><strong>CSS中设置颜色</strong></p>
+<p>a) <strong>基本颜色关键字(英文)</strong></p>
+<p>​    如 <code>white</code>、<code>black</code>、<code>pink</code>、<code>skyblue</code>、<code>deepskyblue</code> 等</p>
+<p>​    局限性: 仅提供百来种基本颜色关键字</p>
+<p>b) <strong>RGB颜色(常用形式)</strong></p>
+<p>​    十进制语法: <code>rgb(red,green,blue)</code>, 取值 <strong>0 - 255</strong></p>
+<p>​    十六进制语法: <code>#rrggbb</code> 可简写: <code>#rgb</code>, 取值 <strong>00 - ff</strong> </p>
+<p>​    白色: <code>rgb(255,255,255)</code>|<code>#fff</code></p>
+<p>​    黑色: <code>rgb(0,0,0)</code>|<code>#000</code></p>
+<p>c) <strong>RGBA颜色(一般做特效用, 带透明度)</strong></p>
+<p>​    A — alpha透明度, 取值 <strong>0 - 1</strong></p>
+<p>​    语法: <code>rhba(red,green,blue,alpha)</code></p>
+<p>​    完全透明: <code>transparent</code>|<code>rgba(red,green,blue,0)</code></p>
+</li>
+</ol>
+<h2 id="设置鼠标指针样式"><a href="#设置鼠标指针样式" class="headerlink" title="设置鼠标指针样式"></a>设置鼠标指针样式</h2><p>语法: <code>cursor : style</code></p>
+<p>常用值:</p>
+<ol>
+<li><code>auto</code> 默认值, 使用浏览器设置的光标</li>
+<li><code>none</code> 不显示光标</li>
+<li><code>default</code> 系统默认光标(斜箭头)</li>
+<li><code>pointer</code> 链接光标(小手)</li>
+<li><code>text</code> 文本输入/选择光标</li>
+<li><code>move</code> 移动光标</li>
+</ol>
+<h3 id="设置图片光标"><a href="#设置图片光标" class="headerlink" title="设置图片光标"></a>设置图片光标</h3><p>语法:  <code>cursor : url(图片URL) x y , replaceStyle</code></p>
+<p>注意点:</p>
+<ol>
+<li><code>x</code> 和 <code>y</code> 代表图片光标与当前像素格(1px*1px区域)的偏移量, 支持负值</li>
+<li><code>replaceStyle</code> 代表当图片失效时, 代替的指针样式</li>
+</ol>
+<h2 id="样式的继承与优先级"><a href="#样式的继承与优先级" class="headerlink" title="样式的继承与优先级"></a>样式的继承与优先级</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>继承指的是: 没有设置样式的元素会继承父元素的样式</p>
+<p>注意点:</p>
+<ol>
+<li><p><strong>默认继承的属性</strong>: 子元素的<strong>字体样式</strong>和<strong>文本样式</strong>如果不设值, 默认继承父元素的对应样式</p>
+</li>
+<li><p>对于不可继承的样式属性, 可通过 <code>inherit</code> 属性<strong>强制继承</strong></p>
+<p>语法: <code>样式属性名: inherit</code></p>
+<p>注意点:</p>
+<ol>
+<li><strong>只继承属性值</strong>, 不继承样式名称</li>
+<li>继承的是 <strong>计算值</strong></li>
+</ol>
+</li>
+</ol>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>优先级指的是: 同一个元素的同一个样式属性被多次赋值时, 该元素优先使用哪个属性值</p>
+<p>为了方便比较CSS属性的优先级, 给CSS属性所处的环境定义一个权重(从大到小):</p>
+<font color="yellowgreen">!important &gt; 内联样式 &gt; id选择器 &gt; 类/属性/伪类选择器 &gt; 元素(标签)/伪元素选择器 &gt;通用选择器</font>
+
+<p><code>!important</code> 属性语法: <code>样式属性名 : 属性值 !important</code></p>
+<p>注意点:</p>
+<ol>
+<li>每条样式属性都有自己的优先级</li>
+<li><code>!important</code> 属性只针对某条样式属性</li>
+</ol>
+<p>总结:</p>
+<ol>
+<li>针对性越强的选择器, 优先级越高</li>
+<li>权重可叠加</li>
+<li>优先级一样, 就近原则(后面的覆盖前面的)</li>
+</ol>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
+            </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《CSS - 常用属性以及继承和优先级》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/12/21/css-styles/" property="cc:attributionName" rel="cc:attributionURL">
+                Tenderness
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/12/25/css-boxmodel/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CSS - 盒子模型">
+                        
+                        <span class="card-title">CSS - 盒子模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CSS盒子模型总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-12-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CSS/" class="post-category" target="_blank">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Box-Model/" target="_blank">
+                        <span class="chip bg-color">Box Model</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/12/12/css-intro/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="CSS简介">
+                        
+                        <span class="card-title">CSS简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CSS相关概念
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-12-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CSS/" class="post-category" target="_blank">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CSS-introduce/" target="_blank">
+                        <span class="chip bg-color">CSS introduce</span>
+                    </a>
+                    
+                    <a href="/tags/querySelector/" target="_blank">
+                        <span class="chip bg-color">querySelector</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://github.com/TendernessCJS" target="_blank">Tenderness</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">13.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/TendernessCJS" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ec_brucechen@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=403740868" class="tooltipped" data-tooltip="QQ联系我: 403740868" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

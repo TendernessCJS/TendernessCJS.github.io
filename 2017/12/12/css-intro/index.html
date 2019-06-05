@@ -1,0 +1,1017 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="CSS简介, HTML CSS JavaScript">
+    <meta name="description" content="
+结构与样式分离在介绍CSS前, 先说说结构和样式分离
+结构和样式分离即尽可能不使用HTML元素来设置样式
+意义:
+
+各司其职, 功能分明
+方便维护管理
+
+
+CSS简介CSS(Cascading Style Sheets), 层叠样式表, ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CSS简介 | Mon</title>
+    <link rel="icon" type="image/png" href="medias/ico.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/hi.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mon</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="medias/hi.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mon</div>
+        <div class="logo-desc">
+            
+            Some Essays about H5
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/TendernessCJS" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>My GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/TendernessCJS" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="My GitHub" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        CSS简介
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CSS-introduce/" target="_blank">
+                                <span class="chip bg-color">CSS introduce</span>
+                            </a>
+                        
+                            <a href="/tags/querySelector/" target="_blank">
+                                <span class="chip bg-color">querySelector</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CSS/" class="post-category" target="_blank">
+                                CSS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-12-12
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        6 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<h2 id="结构与样式分离"><a href="#结构与样式分离" class="headerlink" title="结构与样式分离"></a>结构与样式分离</h2><p>在介绍CSS前, 先说说结构和样式分离</p>
+<p>结构和样式分离即<strong>尽可能不使用HTML元素来设置样式</strong></p>
+<p>意义:</p>
+<ol>
+<li>各司其职, 功能分明</li>
+<li>方便维护管理</li>
+</ol>
+</blockquote>
+<h2 id="CSS简介"><a href="#CSS简介" class="headerlink" title="CSS简介"></a>CSS简介</h2><p>CSS(Cascading Style Sheets), 层叠样式表, 可以给每个元素设置样式</p>
+<p><strong>样式书写格式</strong>: <code>样式名: 样式值</code></p>
+<p>注意: <font color="tomato">css的样式名都是小写</font></p>
+<h3 id="CSS的三种引入方式"><a href="#CSS的三种引入方式" class="headerlink" title="CSS的三种引入方式"></a>CSS的三种引入方式</h3><h4 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h4><p>直接将样式写在元素的style属性上</p>
+<font color="yellowgreen"><strong>不推荐</strong>(结构与样式分离), 并且只能在一个元素上生效</font>
+
+<p>语法: <code>&lt;标签名 style=&quot;样式1; 样式2&quot;&gt;</code></p>
+<h4 id="文档样式表"><a href="#文档样式表" class="headerlink" title="文档样式表"></a>文档样式表</h4><p>将样式写在head元素的style元素中</p>
+<font color="yellowgreen">写demo或者测试时常用, 方便对照管理, 但在项目中会造成混乱</font>
+
+<p>语法:</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+        <span class="token selector">选择器 </span><span class="token punctuation">{</span>
+            样式<span class="token number">1</span><span class="token punctuation">;</span>
+            样式<span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>注意点: <font color="tomato">style元素的type属性默认值是 text/css, 可省略</font></p>
+<h4 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h4><p>将样式写在单独的CSS文件中, 然后在html文件head元素中引入</p>
+<font color="yellowgreen">真正的结构和样式分离, 分文件管理</font>
+
+<p>引入CSS文件的2种方式</p>
+<ol>
+<li><p><strong>link</strong> 标签引入</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>CSS文件的URL<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<p>注意点:</p>
+<p>​    a) <font color="tomato">link元素的type属性默认值是 text/css, 可省略</font></p>
+<p>​    b) <font color="tomato">CSS文件中, 最好在开头写上 @charset “UTF-8”; 然后直接写选择器和样式</font></p>
+</li>
+<li><p><strong>@import</strong> 引入, <font color="tomato">不建议使用, 效率比link低</font></p>
+</li>
+</ol>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+    <span class="token atrule"><span class="token rule">@import</span> <span class="token string">"CSS文件的URL"</span><span class="token punctuation">;</span></span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre>
+<h3 id="CSS的注释语法"><a href="#CSS的注释语法" class="headerlink" title="CSS的注释语法"></a>CSS的注释语法</h3><p>CSS的注释语法: <code>/* 注释 */</code></p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>选择器编写原则: <strong>保证精准的情况下尽量简洁</strong></p>
+<h3 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h3><pre class=" language-css"><code class="language-css"><span class="token selector">* </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<font color="tomato">注意点: 通配符会降低网页显示的速度, 尽量不用</font>
+
+<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><pre class=" language-css"><code class="language-css"><span class="token selector">标签名 </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="类选择器-最常用的选择器"><a href="#类选择器-最常用的选择器" class="headerlink" title="类选择器(最常用的选择器)"></a>类选择器(<font color="deepskyblue">最常用的选择器</font>)</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.class</span>值 </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点: </p>
+<p>a) 在一个HTML文档中, class值可以重复使用, 表示一类元素</p>
+<p>b) 多单词class命名规则: 用 <code>-</code>、<code>_</code> 链接, 或者使用<strong>小驼峰命名</strong></p>
+<p>c) 一个元素可以有多个class值, 通过空格分隔</p>
+<p>d) 最好不要用标签名作为class值</p>
+<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token id">#id</span>值 </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点:</p>
+<p>a) 一个HTML文档中, <strong>id</strong> 值是唯一的, 不能重复(即<strong>一个id对应一个元素</strong>)</p>
+<p>b) 多单词id命名规则: 用 <code>-</code>、<code>_</code> 链接, 或者使用<strong>小驼峰命名</strong></p>
+<p>c) 最好不要用标签名作为id值</p>
+<h3 id="属性选择器-一般用于表单元素"><a href="#属性选择器-一般用于表单元素" class="headerlink" title="属性选择器(一般用于表单元素)"></a>属性选择器(<font color="deep">一般用于表单元素</font>)</h3><font color="yellowgreen">att — attribute(属性)、val — value(属性值)</font>
+
+<h4 id="选择拥有某属性的元素"><a href="#选择拥有某属性的元素" class="headerlink" title="选择拥有某属性的元素"></a>选择拥有某属性的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<h4 id="选择指定属性值的元素"><a href="#选择指定属性值的元素" class="headerlink" title="选择指定属性值的元素"></a>选择指定属性值的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="选择属性值包含某字符串的元素"><a href="#选择属性值包含某字符串的元素" class="headerlink" title="选择属性值包含某字符串的元素"></a>选择属性值包含某字符串的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att~=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="选择属性值恰好等于某值-或者以某值开头且后面紧接着连字符-的元素"><a href="#选择属性值恰好等于某值-或者以某值开头且后面紧接着连字符-的元素" class="headerlink" title="选择属性值恰好等于某值, 或者以某值开头且后面紧接着连字符 - 的元素"></a>选择属性值恰好等于某值, 或者以某值开头且后面紧接着连字符 - 的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att|=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点: 此选择器一般用在 <code>lang</code> 属性上</p>
+<h4 id="选择属性值以某值开头的元素"><a href="#选择属性值以某值开头的元素" class="headerlink" title="选择属性值以某值开头的元素"></a>选择属性值以某值开头的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att^=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="选择属性值以某值结尾的元素"><a href="#选择属性值以某值结尾的元素" class="headerlink" title="选择属性值以某值结尾的元素"></a>选择属性值以某值结尾的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att$=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="选择属性值包含某值的元素"><a href="#选择属性值包含某值的元素" class="headerlink" title="选择属性值包含某值的元素"></a>选择属性值包含某值的元素</h4><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[att*=val]</span> </span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h3><h4 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h4><p>选择器中包含某些后代选择器的元素</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器 后代选择器 <span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点:</p>
+<ol>
+<li>用空格隔开</li>
+<li>包括直接子元素和间接子元素</li>
+</ol>
+<h4 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h4><p>特殊的后代选择器, 只包括直接子元素</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器>子选择器><span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点:</p>
+<ol>
+<li>用 <strong>&gt;</strong> 连接, 最好不要有空格</li>
+<li>只包括直接子元素</li>
+</ol>
+<h4 id="兄弟选择器-sibling"><a href="#兄弟选择器-sibling" class="headerlink" title="兄弟选择器(sibling)"></a>兄弟选择器(sibling)</h4><h5 id="相邻兄弟选择器"><a href="#相邻兄弟选择器" class="headerlink" title="相邻兄弟选择器"></a>相邻兄弟选择器</h5><p>选择器1后面<strong>紧挨着</strong>的选择器2的元素</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器1+选择器2+<span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点: 用 <strong>+</strong> 连接, 最好不要有空格, 只能选后面的兄弟选择器</p>
+<h5 id="全体兄弟选择器"><a href="#全体兄弟选择器" class="headerlink" title="全体兄弟选择器"></a>全体兄弟选择器</h5><p>选择器1后面<strong>所有</strong>选择器的元素</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器1~选择器2~<span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点: 用 <strong>~</strong> 连接, 最好不要有空格, 只能选后面的兄弟选择器</p>
+<h4 id="交集选择器"><a href="#交集选择器" class="headerlink" title="交集选择器"></a>交集选择器</h4><p>同时符合选择器1, 选择器2条件的元素</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器1选择器2<span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点:</p>
+<ol>
+<li>不留空格连接</li>
+<li>标签名放在最前面</li>
+</ol>
+<h4 id="并集选择器"><a href="#并集选择器" class="headerlink" title="并集选择器"></a>并集选择器</h4><p>等价于给选择器1 选择器2的元素设置相同样式</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">选择器1, 选择器2, <span class="token class">...</span></span><span class="token punctuation">{</span>
+    样式<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意点: 用 <strong>,</strong> (逗号)连接, 可留空格</p>
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><h4 id="动态伪类"><a href="#动态伪类" class="headerlink" title="动态伪类"></a>动态伪类</h4><ol>
+<li><code>a:link</code> 未访问的网页</li>
+<li><code>a:visited</code> 访问过的网页</li>
+<li><code>a:focus</code> 当前拥有输入焦点的元素</li>
+<li><code>a:hover</code> 鼠标移到元素上显示的样式<strong>(常用)</strong></li>
+<li><code>a:active</code> 激活状态 (鼠标单击连接时, 未打开)</li>
+</ol>
+<p>注意点:</p>
+<ol>
+<li>除a元素外, <code>:hover</code> 和 <code>:active</code> 可以应用到其他元素上 (不常用, 兼容问题)</li>
+<li><code>:hover</code>必须放在 <code>:link</code> 和 <code>:visited</code> 后面, <code>:active</code> 放在 <code>:hover</code> 后面</li>
+<li><font color="deepskyblue">给a设置样式相当于给所有动态伪类设置样式</font>
+
+</li>
+</ol>
+<h4 id="结构伪类-可单独使用"><a href="#结构伪类-可单独使用" class="headerlink" title="结构伪类(可单独使用)"></a>结构伪类(<font color="tomato">可单独使用</font>)</h4><ol>
+<li><code>:nth-child(an+b)</code> 父元素的第an+b个子元素, a、b是常数, n是0和正整数</li>
+<li><code>:nth-last-child(an+b)</code> 父元素的倒数第an+b个子元素</li>
+<li><code>:nth-of-type(an+b)</code> 父元素中第an+b个该标签的子元素</li>
+<li><code>:nth-last-of-type(an+b)</code> 父元素中倒数第an+b个该标签的子元素</li>
+<li><code>:first-child</code> 等同于 :nth-child(1)</li>
+<li><code>:last-child</code> 等同于 :nth-last-child(1)</li>
+<li><code>:only-child</code> 父元素中唯一的子元素, 等同于 :first-child:last-child</li>
+<li><code>:nth-child(2n)</code>、<code>:nth-child(even)</code> 父元素的第偶数个子元素</li>
+<li><code>:nth-child(2n+1)</code>、<code>:nth-child(odd)</code> 父元素的第奇数个子元素</li>
+<li><code>:empty</code> 代表内容完全空白的元素</li>
+<li><code>:root</code> 根元素, 即html元素</li>
+</ol>
+<h4 id="否定伪类"><a href="#否定伪类" class="headerlink" title="否定伪类"></a>否定伪类</h4><p>语法: <code>:not(x)</code> x为简单选择器(否定伪类除外), 表示除x以外的元素</p>
+<p>注意点</p>
+<ol>
+<li>最好加上标签</li>
+<li>没有标签时, 一般加上 <code>:not(body):not(html)</code></li>
+</ol>
+<h3 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h3><p>注意点: <font color="tomato">伪元素也能使用单冒号, 但为了更好区分伪元素和伪类, 建议伪元素使用双冒号</font></p>
+<ol>
+<li><p><code>::first-line</code> 针对首行文本设置(只能设置字体 颜色 背景属性)</p>
+</li>
+<li><p><code>::first-letter</code>  针对首字母设置(字体 margin padding)</p>
+</li>
+<li><p><code>::before</code> 和 <code>::after</code> 往元素前后加内容(<strong>比较常用</strong>)</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token pseudo-element">::before</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"文字内容"</span><span class="token punctuation">;</span>        -----插入文本
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token url">url("图片url")</span><span class="token punctuation">;</span>   -----插入图片
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">;</span>     -----获取属性值, 并插入元素中
+<span class="token punctuation">}</span>
+</code></pre>
+<p><font color="tomato"><strong>伪元素可以被鼠标选中</strong></font></p>
+
+<p><font color="tomato"><strong>在伪元素选择器可以设置任何样式, 改变伪元素的行为表现</strong></font></p>
+
+</li>
+</ol>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
+            </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《CSS简介》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/12/12/css-intro/" property="cc:attributionName" rel="cc:attributionURL">
+                Tenderness
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/12/21/css-styles/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CSS - 常用属性以及继承和优先级">
+                        
+                        <span class="card-title">CSS - 常用属性以及继承和优先级</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CSS常用属性(样式)总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-12-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CSS/" class="post-category" target="_blank">
+                                    CSS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/styles/" target="_blank">
+                        <span class="chip bg-color">styles</span>
+                    </a>
+                    
+                    <a href="/tags/inheritance/" target="_blank">
+                        <span class="chip bg-color">inheritance</span>
+                    </a>
+                    
+                    <a href="/tags/priority/" target="_blank">
+                        <span class="chip bg-color">priority</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/12/09/html-elements-updating/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="HTML - 其他元素(持续更新)">
+                        
+                        <span class="card-title">HTML - 其他元素(持续更新)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            标签语义化, H5新元素总结
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-12-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/HTML/" class="post-category" target="_blank">
+                                    HTML
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tags-elements/" target="_blank">
+                        <span class="chip bg-color">tags(elements)</span>
+                    </a>
+                    
+                    <a href="/tags/H5/" target="_blank">
+                        <span class="chip bg-color">H5</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://github.com/TendernessCJS" target="_blank">Tenderness</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">13.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/TendernessCJS" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ec_brucechen@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=403740868" class="tooltipped" data-tooltip="QQ联系我: 403740868" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
