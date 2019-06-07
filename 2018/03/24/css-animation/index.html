@@ -399,14 +399,14 @@ transform-functions类型2D转换
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        685
+                        1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        5 分
                     </div>
                     
                 
@@ -478,7 +478,7 @@ transform-functions类型2D转换
 <p>b) 过渡属性的属性值必须发生变化 </p>
 <p>c) 过渡效果的持续时长</p>
 <p>基本语法: <code>transition: property duration [timing-function] [delay]</code></p>
-<h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h3><p>transition-property 设置需要过渡效果的属性</p>
+<h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h3><p>设置需要过渡效果的属性</p>
 <p>语法:<code>transition-property: none|all|property</code></p>
 <p><strong>属性值</strong></p>
 <ol>
@@ -486,10 +486,12 @@ transform-functions类型2D转换
 <li><code>al</code> 表示所有属性获得过渡效果</li>
 <li><code>property</code> 用来定义需要过渡的CSS属性名称列表, 列表用逗号(,)隔开</li>
 </ol>
-<h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h3><p>transition-duration 设置过渡效果持续的时长</p>
+<h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h3><p>设置过渡效果持续的时长</p>
+<p>语法: <code>transition-duration : time</code></p>
 <font color="deepskyblue">*默认值为0, 表示没有过渡效果, 设置值时需要带单位(s, ms)</font>
 
-<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>transition-timing-function 设置过渡效果的速度曲线</p>
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h3><p>设置过渡效果的速度曲线</p>
+<p>语法: <code>transition-timing-function : val</code></p>
 <p><strong>属性值</strong></p>
 <ol>
 <li><code>ease</code> 默认值,  先慢后快再慢</li>
@@ -499,7 +501,101 @@ transform-functions类型2D转换
 <li><code>linear</code> 匀速</li>
 <li><code>cubic-bezier(n, n, n, n)</code> 自定义速度曲线</li>
 </ol>
-<h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h3><p>transition-delay 设置延时效果</p>
+<h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h3><p>设置延时效果</p>
+<p>语法: <code>transition-delay : time</code></p>
+<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><p>单独设置多个属性的过渡效果时, 过渡列表用逗号( <strong>,</strong> )分隔</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">transition</span><span class="token punctuation">:</span> width <span class="token number">5</span>s, height <span class="token number">10</span>s<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 等同于 */</span>
+<span class="token property">transition-property</span><span class="token punctuation">:</span> width, height<span class="token punctuation">;</span>
+<span class="token property">transition-duration</span><span class="token punctuation">:</span> <span class="token number">5</span>s, <span class="token number">10</span>s<span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-css"><code class="language-css"><span class="token property">transition</span><span class="token punctuation">:</span> width, height, <span class="token number">10</span>s<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 等同于 */</span>
+<span class="token property">transition-property</span><span class="token punctuation">:</span> width, height<span class="token punctuation">;</span>
+<span class="token property">transition-duration</span><span class="token punctuation">:</span> <span class="token number">10</span>s<span class="token punctuation">;</span>
+</code></pre>
+<font color="tomato">其他属性用法一样</font>
+
+<h2 id="animation属性"><a href="#animation属性" class="headerlink" title="animation属性"></a>animation属性</h2><p>设置元素的执行的动画, 语法: <code>animation : name duration [timing-function] [delay] [iteration-count] [direction]</code></p>
+<h3 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h3><p>设置关键帧动画(@keyframes)的名字</p>
+<p>语法: <code>animation-name : keyframename|none</code></p>
+<h3 id="keyframes"><a href="#keyframes" class="headerlink" title="@keyframes"></a>@keyframes</h3><p>定义关键帧动画</p>
+<p>语法:</p>
+<ol>
+<li><p>只设置起始状态和结束状态</p>
+<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> keyframename</span> <span class="token punctuation">{</span>
+    <span class="token selector">form </span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* 起始样式 */</span> <span class="token punctuation">}</span>
+    <span class="token selector">to </span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* 结束样式 */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>设置多个关键帧</p>
+<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> keyframename</span> <span class="token punctuation">{</span>
+    <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* 起始样式 */</span> <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/* percentage { key-styles } */</span>
+    <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* 结束样式 */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h3><p>设置动画周期时长</p>
+<p>语法: <code>animation : time</code></p>
+<font color="deepskyblue">默认值为<code>0</code>, 表示不会播放动画</font>
+
+<h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3><p>设置动画的动画曲线</p>
+<p>语法: <code>animation-timing-function : val</code></p>
+<font color="deepskyblue">取值与过渡的<code>transition-timing-function</code>相同</font>
+
+<h3 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h3><p>设置动画的延迟效果</p>
+<p>语法: <code>animation-delay : time</code></p>
+<font color="deepskyblue">支持负值, 表示跳过开头对应时长</font>
+
+<h3 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h3><p>设置动画播放多少次</p>
+<p>语法: <code>animation-iteration-count : number | infinite</code></p>
+<font color="deepskyblue">默认值为<code>1</code>, 表示只播放一次; 设为<code>infinite</code>表示循环播放</font>
+
+<h3 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h3><p>设置动画周期播放行为表现(方向)</p>
+<p>语法: <code>animation-direction : val</code></p>
+<font color="deepskyblue">当<code>animation-iteration-count</code>不为<code>1</code>时, 该属性才生效</font>
+
+<p>属性值:</p>
+<ol>
+<li><code>normal</code> 默认值, 正常播放</li>
+<li><code>reverse</code> 反方向播放</li>
+<li><code>alternate</code> 来回播放( <strong>奇数周期正常播放, 偶数周期反向播放</strong> )</li>
+<li><code>alternate-reverse</code> 来回播放( <strong>奇数周期反向播放, 偶数周期正常播放</strong> )</li>
+</ol>
+<h3 id="设置元素在动画外的状态"><a href="#设置元素在动画外的状态" class="headerlink" title="设置元素在动画外的状态"></a>设置元素在动画外的状态</h3><p>语法: <code>animation-fill-mode : val</code></p>
+<p>属性值:</p>
+<ol>
+<li><code>none</code> 默认值, 元素在动画结束时回到没开始状态</li>
+<li><code>forwards</code> 元素在动画结束时保持<strong>最后关键帧</strong>的状态</li>
+<li><code>backfords</code> 元素在动画结束时回到<strong>第一帧</strong>的状态</li>
+<li><code>both</code> 轮流使用<code>forwards</code>和<code>backwards</code>规则</li>
+</ol>
+<h3 id="设置动画的播放状态"><a href="#设置动画的播放状态" class="headerlink" title="设置动画的播放状态"></a>设置动画的播放状态</h3><p>语法: <code>animation-play-state : running(播放)|paused(暂停)</code></p>
+<font color="deepskyblue">一般通过JS代码控制CSS动画的播放和暂停</font>
+
+<h2 id="支持过渡-动画的属性"><a href="#支持过渡-动画的属性" class="headerlink" title="支持过渡/动画的属性"></a>支持过渡/动画的属性</h2><ol>
+<li><code>color</code>前景色</li>
+<li><code>background</code>系列， 如<code>background-color</code>、<code>background-position</code>、<code>background-size</code></li>
+<li><code>width</code> 和 <code>height</code>宽和高</li>
+<li><code>border</code>系列, 如<code>border-width</code>、<code>border-color</code>、<code>border-radius</code></li>
+<li><code>padding</code>系列</li>
+<li><code>margin</code>系列</li>
+<li>定位系列, 如<code>left</code>、<code>right</code>、<code>top</code>、<code>bottom</code></li>
+<li><code>text-shadow</code>和<code>box-shadow</code>阴影 </li>
+<li><code>outline</code>系列, 如<code>outline-width</code>、<code>outline-color</code></li>
+<li><code>font</code>系列, 如<code>font-size</code>、<code>font-weight</code></li>
+<li>文本系列, 如<code>line-height</code>、<code>letter-spacing</code>、<code>word-spacing</code></li>
+<li><code>transform</code>系列, 如<code>perspective</code>、<code>transform-origin</code></li>
+<li>其他, 如<code>z-index</code>、<code>visibility</code>、<code>opacity</code>、<code>vertical-align</code></li>
+</ol>
+<h2 id="过渡与动画对比"><a href="#过渡与动画对比" class="headerlink" title="过渡与动画对比"></a>过渡与动画对比</h2><ol>
+<li><code>transition</code> 需要<strong>事件触发</strong>使元素样式属性放生改变, 而<code>animation</code>不需要触发任何事件即可执行( 即可以在网页加载后<strong>自动执行</strong>)</li>
+<li><code>transition</code>一般是<strong>一次性</strong>的, 除非多次触发事件, 而<code>animation</code>可通过设置<code>animation-iteration-count</code>达到<strong>循环播放</strong>效果</li>
+<li><code>transition</code>只能定义开始状态和结束状态, 而<code>animation</code>则可以定义多个关键帧状态</li>
+</ol>
 
             </div>
             <hr>
@@ -574,28 +670,27 @@ transform-functions类型2D转换
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/03/24/css-animation/">
+                <a href="/2018/04/01/css-bg-bd/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CSS3动画">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CSS - 背景和边框">
                         
-                        <span class="card-title">CSS3动画</span>
+                        <span class="card-title">CSS - 背景和边框</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            CSS3动画总结
+                            CSS背景和边框补充和拓展
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -608,20 +703,15 @@ transform-functions类型2D转换
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/transform/" target="_blank">
-                        <span class="chip bg-color">transform</span>
+                    <a href="/tags/background/" target="_blank">
+                        <span class="chip bg-color">background</span>
                     </a>
                     
-                    <a href="/tags/transition/" target="_blank">
-                        <span class="chip bg-color">transition</span>
-                    </a>
-                    
-                    <a href="/tags/animation/" target="_blank">
-                        <span class="chip bg-color">animation</span>
+                    <a href="/tags/border-image/" target="_blank">
+                        <span class="chip bg-color">border-image</span>
                     </a>
                     
                 </div>
@@ -791,7 +881,7 @@ transform-functions类型2D转换
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">13.6k</span>
+                <span class="white-color">15.6k</span>
             
 
             
