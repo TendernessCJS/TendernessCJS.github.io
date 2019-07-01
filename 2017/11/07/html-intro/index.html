@@ -397,14 +397,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        6 分
                     </div>
                     
                 
@@ -524,8 +524,14 @@ HTML标签
 <p>语法: <code>&lt;!DOCTYPE html&gt;</code></p>
 <font color="deepskyblue">放在最前面，不能省略，省略了会出现兼容问题</font>
 
+<p><strong>标准模式下</strong>: 页面排版及JS解析是以该浏览器支持的最高标准来执行</p>
+<p><strong>怪异模式下</strong>: 向后兼容, 模拟老浏览器模式行为, 防止页面无法正常工作</p>
 <h3 id="html元素"><a href="#html元素" class="headerlink" title="html元素"></a>html元素</h3><p>html元素是HTML文档的根元素，其他所有元素都是html元素的子元素，W3C标准建议html有一个lang属性</p>
 <p>语法: <code>&lt;html lang=&quot;zh&quot;&gt;&lt;/html&gt;</code></p>
+<h4 id="离线存储资源"><a href="#离线存储资源" class="headerlink" title="离线存储资源"></a>离线存储资源</h4><p><code>manifest</code> 属性, 规定文档的缓存<code>manifest</code>的位置</p>
+<p>HTML5 引入了应用程序缓存, 这意味着 Web 应用程序可以被缓存, 然后在无互联网连接的时候进行访问(即 <strong>离线存储资源</strong> ):</p>
+<p><strong>在线</strong> 的情况下, 浏览器发现<code>&lt;html&gt;</code>元素有<code>manifest</code>属性, 就会请求 <strong>manifest文件</strong>, 如果是第一次访问 App, 浏览器根据 manifest 文件的内容下载相应资源并进行离线存储, 再次访问时, 会使用离线资源加载页面, 对比新旧 manifest 文件, 如有变动, 重新下载资源并进行离线储存</p>
+<p><strong>离线</strong> 的情况下, 如果有离线存储资源, 浏览器直接使用并加载页面</p>
 <h3 id="head元素"><a href="#head元素" class="headerlink" title="head元素"></a>head元素</h3><p>head元素里面的内容是HTML文档的一般信息(元数据)</p>
 <p>语法: </p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -862,7 +868,7 @@ HTML标签
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.9k</span>
+                <span class="white-color">36.4k</span>
             
 
             

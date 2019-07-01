@@ -400,7 +400,7 @@ CSS简介CSS(Cascading Style Sheets), 层叠样式表, ">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.6k
+                        1.7k
                     </div>
                     
 
@@ -472,6 +472,12 @@ CSS简介CSS(Cascading Style Sheets), 层叠样式表, ">
     <span class="token atrule"><span class="token rule">@import</span> <span class="token string">"CSS文件的URL"</span><span class="token punctuation">;</span></span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 </code></pre>
+<p>两种方法对比:</p>
+<ol>
+<li><code>&lt;link&gt;</code>属于 XHTML 标签, 除了加载 CSS 外还能订阅 RSS, 而<code>@import</code>是 CSS 提供的, 只能加载CSS</li>
+<li><code>&lt;link&gt;</code>的加载时期是与页面同步记载, 而<code>@import</code>则是等页面加载完再进行引入 CSS</li>
+<li><code>@import</code> 不兼容 IE5 以下浏览器</li>
+</ol>
 <h3 id="CSS的注释语法"><a href="#CSS的注释语法" class="headerlink" title="CSS的注释语法"></a>CSS的注释语法</h3><p>CSS的注释语法: <code>/* 注释 */</code></p>
 <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>选择器编写原则: <strong>保证精准的情况下尽量简洁</strong></p>
 <h3 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h3><pre class=" language-css"><code class="language-css"><span class="token selector">* </span><span class="token punctuation">{</span>
@@ -627,9 +633,7 @@ CSS简介CSS(Cascading Style Sheets), 层叠样式表, ">
     <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">;</span>     -----获取属性值, 并插入元素中
 <span class="token punctuation">}</span>
 </code></pre>
-<p><font color="tomato"><strong>伪元素可以被鼠标选中</strong></font></p>
-
-<p><font color="tomato"><strong>在伪元素选择器可以设置任何样式, 改变伪元素的行为表现</strong></font></p>
+<p><font color="tomato"><strong>伪元素可以被鼠标选中</strong></font></p><br><p><font color="tomato"><strong>在伪元素选择器可以设置任何样式, 改变伪元素的行为表现</strong></font></p>
 
 </li>
 </ol>
@@ -926,7 +930,7 @@ CSS简介CSS(Cascading Style Sheets), 层叠样式表, ">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.9k</span>
+                <span class="white-color">36.4k</span>
             
 
             
