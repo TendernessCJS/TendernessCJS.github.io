@@ -392,14 +392,14 @@ MVVMMVC ( Model-View-Controller )和 MVVM (Model-View-View">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        18.5k
+                        18.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        79 分
+                        80 分
                     </div>
                     
                 
@@ -728,8 +728,7 @@ MVVMMVC ( Model-View-Controller )和 MVVM (Model-View-View">
 </li>
 <li><p><font color="yellowgreen"><strong>render</strong></font> 相关</p>
 <p>a) 设置了 <font color="yellowgreen">render</font> 函数, Vue实例就不会从配置项 <font color="yellowgreen">template</font> 或者 <font color="yellowgreen">el</font> 提取的 <code>innerHTML</code> 作为模板编译渲染函数</p>
-<p>b) <font color="tomato">对于 <font color="yellowgreen">render</font> 函数的更多描述, 放在 <strong>Vue+Webpack</strong> 部分</font></p>
-
+<p>b) <a href="#render"><font color="tomato">对于 <font color="yellowgreen">render</font> 函数的更多描述, 放在 <strong>Vue+Webpack</strong> 部分</font></a>.</p>
 </li>
 </ol>
 <h4 id="其他配置项"><a href="#其他配置项" class="headerlink" title="其他配置项"></a>其他配置项</h4><p>在创建Vue实例时, 还可以接受更多配置项, 如 <strong>生命周期钩子</strong>、<strong>自定义指令</strong>、<strong>组件</strong>、<strong>混入</strong> 等, 对于这些配置项的描述, 将在对应部分描述</p>
@@ -3101,13 +3100,16 @@ module<span class="token punctuation">.</span>exports <span class="token operato
             template<span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./src/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
             filename<span class="token punctuation">:</span> <span class="token string">"index.html"</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true">// 必须使用插件, 让其他loader识别到vue的三种顶级语言块</span>
         <span class="token keyword">new</span> <span class="token class-name">VueLoaderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token comment" spellcheck="true">// 能匹配到普通的`.css`文件以及`.vue`文件的`&lt;style>`</span>
             <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
             <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.less$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token string">'less-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
             <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.(png|jpe?g|gif)$/i</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>loader<span class="token punctuation">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span> options<span class="token punctuation">:</span> <span class="token punctuation">{</span>limit<span class="token punctuation">:</span> <span class="token number">8192</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'[name]-[hash:8].[ext]'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment" spellcheck="true">// 能匹配到普通的`.js`文件以及`.vue`文件的`&lt;script>`</span>
             <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.m?js$/</span><span class="token punctuation">,</span> exclude<span class="token punctuation">:</span> <span class="token regex">/(node_modules|bower_components)/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'babel-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
             <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.vue$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'vue-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
         <span class="token punctuation">]</span>
@@ -3117,8 +3119,49 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </li>
 </ol>
 <h4 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h4><p><code>.vue</code>文件是一个自定义的文件类型, 用类 HTML 语法描述一个 Vue 组件, 一个<code>.vue</code>文件包含三种类型的顶级语言块<code>&lt;template&gt;</code>,<code>&lt;script&gt;</code>,<code>&lt;style&gt;</code></p>
-<p><code>vue-loader</code> 会解析文件, 提取每个语言块, 如有必要会通过其它 loader 处理, 最后将他们组装成一个 ES6模块, 它的默认导出是一个 Vue.js 组件选项的对象</p>
+<p><code>vue-loader</code> 会解析文件, 提取每个语言块, 如有必要会通过其它 loader 处理, 最后将他们组装成一个 ES6模块, 它的默认导出是一个 Vue.js <strong>组件选项的对象</strong></p>
+<pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- .vue文件名建议使用大驼峰命名 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- 一个.vue文件只能有一个template --></span>
+<span class="token comment" spellcheck="true">&lt;!-- template的内容将被vue-template-compiler预处理为JS渲染函数, 注入到script导出的组件中 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 必须有一个父容器包裹模板内容 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        App
+        <span class="token comment" spellcheck="true">&lt;!-- 模板内容 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 
+<span class="token comment" spellcheck="true">&lt;!-- 一个.vue文件只能有一个script --></span>
+<span class="token comment" spellcheck="true">&lt;!-- 默认导出组件选项对象, 也可以导出 Vue.extend() 创建的扩展对象 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- 匹配/.\js$/的webpack模板规则 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 具名组件</span>
+        name<span class="token punctuation">:</span> <span class="token string">"App"</span>
+        <span class="token comment" spellcheck="true">/* 此处编写Vue实例的配置项 */</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 一个.vue文件可以包含多个style --></span>
+<span class="token comment" spellcheck="true">&lt;!-- scoped表示该样式表是对该文件(组件)的元素生效 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- 子组件的根节点会受父组件的作用域样式表影响, 这样设计为了让父组件可以以布局角度出发 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- 父组件的作用域样式表不会渗透到子组件的模板内容中 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- v-html创建的DOM不会受作用域样式表影响 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style language-css">
+    <span class="token comment" spellcheck="true">/* 作用域样式表 */</span>
+    <span class="token comment" spellcheck="true">/* 可通过深度选择器渗透到子组件或者v-html创建的DOM中 */</span>
+    <span class="token comment" spellcheck="true">/* 深度选择器: 在正常的CSS选择器前加 >>> 或者 /deep/ */</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+    <span class="token comment" spellcheck="true">/* 全局样式表 */</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- 默认匹配/\.css$/, 设置lang="less"后, 匹配/\.less$/ --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>less<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    <span class="token comment" spellcheck="true">/* 使用预处理器less编辑样式 */</span>
+    <span class="token comment" spellcheck="true">/* 注意: 使用less时, 深度选择器只能使用 /deep/ */</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre>
+<p><span id="render"></span></p>
+<h4 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h4>
             </div>
             <hr>
 
@@ -3413,7 +3456,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">38.8k</span>
+                <span class="white-color">39.3k</span>
             
 
             
