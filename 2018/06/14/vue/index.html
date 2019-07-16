@@ -392,14 +392,14 @@ MVVMMVC ( Model-View-Controller )和 MVVM (Model-View-View">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        26.6k
+                        27.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        114 分
+                        117 分
                     </div>
                     
                 
@@ -4043,6 +4043,7 @@ computed<span class="token punctuation">:</span> <span class="token function">ma
   <span class="token comment" spellcheck="true">// 使用箭头函数, 让代码更简洁  </span>
   num<span class="token punctuation">:</span> state <span class="token operator">=</span><span class="token operator">></span> state<span class="token punctuation">.</span>num<span class="token punctuation">,</span>
   <span class="token comment" spellcheck="true">// 传字符串, 相当于 numAlias: state => state.num</span>
+  <span class="token comment" spellcheck="true">// 重命名</span>
   numAlias<span class="token punctuation">:</span> <span class="token string">'num'</span><span class="token punctuation">,</span>
   msg<span class="token punctuation">:</span> <span class="token string">'msg'</span><span class="token punctuation">,</span>
   list<span class="token punctuation">:</span> <span class="token string">'list'</span><span class="token punctuation">,</span>
@@ -4331,16 +4332,19 @@ computed<span class="token punctuation">:</span> <span class="token punctuation"
       state<span class="token punctuation">:</span> <span class="token punctuation">{</span>msg<span class="token punctuation">:</span> <span class="token string">'A模块'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
       getters<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         <span class="token function">resolveMsg</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// getter接收的state是当前模块的局部状态</span>
           <span class="token keyword">return</span> <span class="token string">'这是'</span> <span class="token operator">+</span> state<span class="token punctuation">.</span>msg
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       mutations<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// mutation接收的state也是当前模块的局部状态</span>
         <span class="token function">update</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token punctuation">{</span>
           console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'模块A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
           state<span class="token punctuation">.</span>msg <span class="token operator">=</span> <span class="token string">'更新A模块'</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// context也是局部的, 在后面介绍</span>
         <span class="token function">doAction</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
           console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'模块A'</span><span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
@@ -4408,11 +4412,11 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
     {{this['moduleA/resolveMsg']}}
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">:title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this[<span class="token punctuation">'</span>moduleA/resolveMsg<span class="token punctuation">'</span>]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>段落<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this[<span class="token punctuation">'</span>moduleA/update<span class="token punctuation">'</span>]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>xxx<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this[<span class="token punctuation">'</span>moduleA/update<span class="token punctuation">'</span>]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>按钮<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>解决方案: 通过对象的形式使用, 后面的例子只修改<code>getter</code>, 其他2项改法一样</p>
+<p>解决方案: 通过对象的形式使用(重命名), 后面的例子只修改<code>getter</code>, 其他2项改法一样</p>
 <pre class=" language-js"><code class="language-js">computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// state也可以通过这方法, 模板中直接使用 a_msg</span>
@@ -4425,7 +4429,7 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>但是, 随着模块中<code>state</code>的增多,  甚至到多层 <strong>嵌套模块</strong> 时, 编写会越来麻烦, 如</p>
+<p>但是, 随着模块中<code>state</code>的增多,  甚至涉及到到多层 <strong>嵌套模块</strong> 时, 编写会越来麻烦, 如</p>
 <pre class=" language-js"><code class="language-js">computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// a模块中嵌套sub模块, 提取sub模块的`msg`和`num`</span>
   <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -4446,6 +4450,135 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
 <pre class=" language-js"><code class="language-js">computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">'moduleA/sub'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">,</span> <span class="token string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
+</code></pre>
+<p>最后, Vuex 还提供了了一个帮助函数<code>createNamespacedHelpers</code>, 用于创建基于某个命名空间的辅助函数, 它返回一个对象, 该对象有对应命名空间的辅助函数</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 引入</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>createNamespacedHelpers<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"vuex"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 解构, 如需创建多个模块的的辅助函数, 可以通过解构重命名解决</span>
+<span class="token comment" spellcheck="true">// 如 const {mapState: subState, mapGetters: subGetters, mapMutations: subMutations, mapActions: subActions} = new createNamespacedHelpers('moduleA/sub');</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>mapState<span class="token punctuation">,</span> mapGetters<span class="token punctuation">,</span> mapMutations<span class="token punctuation">,</span> mapActions<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">createNamespacedHelpers</span><span class="token punctuation">(</span><span class="token string">'moduleA/sub'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 使用</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">,</span> <span class="token string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token comment" spellcheck="true">/* 映射sub模块的getter */</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token comment" spellcheck="true">/* 映射sub模块的mutation */</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token comment" spellcheck="true">/* 映射sub模块的action */</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在 <strong>Action</strong> 部分, 我们提及过<code>action</code>中接收的<code>context</code>参数 <strong>并不是 store 实例</strong>, 而是 <strong>当前 action 的上下文环境</strong></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>msg<span class="token punctuation">:</span> <span class="token string">'根store'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>state<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    moduleA<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      namespaced<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      state<span class="token punctuation">:</span> <span class="token punctuation">{</span>msg<span class="token punctuation">:</span> <span class="token string">'A模块'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>state<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// 分发模块A的`doAction` 打印的是 'A模块'</span>
+          <span class="token comment" spellcheck="true">// 同样context的getters, commit, dispatch也是局部的</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然而, 带命名空间的模块有时也需要 <strong>访问全局内容</strong>, 因此在模块中, <code>rootState</code>和<code>rootGetters</code>会作为 <strong>第三和第四个参数传到<code>getter</code>中</strong>, 并 <strong>通过<code>context</code>传进<code>action</code>中</strong></p>
+<pre class=" language-js"><code class="language-js">getters<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token function">getRootState</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> getter<span class="token punctuation">,</span> rootState<span class="token punctuation">,</span> rootGetters<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 获取全局state的msg</span>
+    <span class="token keyword">return</span> rootState<span class="token punctuation">.</span>msg
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>rootState<span class="token punctuation">,</span> rootGetters<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 打印全局state的msg</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rootState<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在模块<code>action</code>中, 如果想分发 <strong>提交全局</strong><code>mutation</code>或者 <strong>分发全局</strong><code>action</code>, 可将<code>{root: true}</code>作为第三参数传入当前上下文环境<code>context</code>的<code>commit</code>或<code>dispatch</code>即可</p>
+<pre class=" language-js"><code class="language-js">actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>commit<span class="token punctuation">,</span> dispatch<span class="token punctuation">,</span> rootState<span class="token punctuation">,</span> rootGetters<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 打印更新前的全局msg '根store'</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rootState<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 提交全局的 update, 更新全局msg</span>
+    <span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'update'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>root<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 分发全局的 doAction, 打印更新后的全局msg, '更新根store'</span>
+    <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'doAction'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>root<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>命名空间模块的<code>action</code>还能 <strong>注册到全局</strong> 中</p>
+<pre class=" language-js"><code class="language-js">actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  doAction<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 设置 root: true 后, 当前命名空间模板将没有doAction</span>
+    <span class="token comment" spellcheck="true">// 组件分发需要 this.$store.dispatch('doAction')</span>
+    <span class="token comment" spellcheck="true">// 注意 action 类型重复</span>
+    root<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token function">handler</span><span class="token punctuation">(</span>namespacedCtx<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// context 还是当前action的上下文</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>namespacedCtx<span class="token punctuation">.</span>state<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="Vuex的表单处理"><a href="#Vuex的表单处理" class="headerlink" title="Vuex的表单处理"></a>Vuex的表单处理</h3><p>因为 Vuex 中改变状态的唯一方式是通过提交<code>mutation</code>, 所以, 当表单元素使用<code>v-model</code>绑定 Vuex 中状态时, <code>v-model</code>会 <strong>试图直接修改状态</strong>, 这明显违背了 Vuex 的规则</p>
+<p>解决方法1:</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 通过v-bind:value绑定msg状态, 监听input事件 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>msg<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>update<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token comment" spellcheck="true">// 省略import</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 省略其他配置项</span>
+    computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'updateMsg'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token function">update</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// input事件提交mutation, 将输入框value值传进payload</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">updateMsg</span><span class="token punctuation">(</span><span class="token punctuation">{</span>newVal<span class="token punctuation">:</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>解决方法2:</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 通过v-model绑定msg --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>msg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 省略其他配置项</span>
+    computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 通过getter, setter方式实现双向数据绑定</span>
+      msg<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// getter 读取 msg 状态</span>
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>msg
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true">// setter 提交 mutation</span>
+        <span class="token keyword">set</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'updateMsg'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>newVal<span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
 
             </div>
@@ -4742,7 +4875,7 @@ methods<span class="token punctuation">:</span> <span class="token punctuation">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">47k</span>
+                <span class="white-color">47.8k</span>
             
 
             
