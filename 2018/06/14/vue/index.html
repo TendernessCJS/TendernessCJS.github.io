@@ -392,14 +392,14 @@ MVVMMVC ( Model-View-Controller )和 MVVM (Model-View-View">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        27.4k
+                        27.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        117 分
+                        118 分
                     </div>
                     
                 
@@ -4580,6 +4580,107 @@ actions<span class="token punctuation">:</span> <span class="token punctuation">
   <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
+<h2 id="混入-store-模式"><a href="#混入-store-模式" class="headerlink" title="混入 + store 模式"></a>混入 + store 模式</h2><p>在上一节中, 我们提及到 Vuex 可以帮助我们 <strong>管理共享状态</strong>, 但是如果我们开发的项目并不大, 使用 Vuex 的操作是相当繁琐的, 此时, 我们只需使用一个简单的 <strong>混入 + store 模式</strong> 就能满足我们的需求</p>
+<h3 id="混入"><a href="#混入" class="headerlink" title="混入"></a>混入</h3><p><strong>混入</strong> 其实就是一个 <strong>对象</strong>, 该对象包含 <font color="yellowgreen"><strong>任意 Vue 组件的配置选项</strong></font>, 是一种灵活的方式, <strong>分发</strong> Vue 组件中的 <strong>可复用</strong> 功能</p>
+<ol>
+<li><p>创建<code>MyMixin.js</code></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> MyMixin <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  computed<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// ... 其他配置项</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> MyMixin
+</code></pre>
+</li>
+<li><p>混入<code>MyMixin</code></p>
+<p>a) 全局混入</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// main.js中</span>
+<span class="token comment" spellcheck="true">// 引入 Vue</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">"vue"</span>
+<span class="token comment" spellcheck="true">// 引入 Mixin</span>
+<span class="token keyword">import</span> MyMixin <span class="token keyword">from</span> <span class="token string">"./components/MyMixin"</span>
+<span class="token comment" spellcheck="true">// 全局混入</span>
+Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span>MyMixin<span class="token punctuation">)</span>
+</code></pre>
+<p>b) 局部混入</p>
+<pre class=" language-html"><code class="language-html">// 单文件组件中
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token keyword">import</span> MyMixin <span class="token keyword">from</span> <span class="token string">"./MyMixin"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"MyComp"</span><span class="token punctuation">,</span>
+    mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>MyMixin<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+</li>
+</ol>
+<h3 id="混入-store-模式-1"><a href="#混入-store-模式-1" class="headerlink" title="混入 + store 模式"></a>混入 + store 模式</h3><p>依然用 <strong>计步器</strong> 当做例子</p>
+<ol>
+<li><p><code>MyMixin.js</code></p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 共享状态的储存位置(全局)</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+  num<span class="token punctuation">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> MyMixin <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> data
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// 管理状态的方法 action</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token operator">++</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token operator">--</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> MyMixin
+</code></pre>
+</li>
+<li><p>各个组件引用并使用</p>
+<pre class=" language-html"><code class="language-html">// ShowNum组件
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    {{num}}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token keyword">import</span> MyMixin <span class="token keyword">from</span> <span class="token string">"./MyMixin"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"ShowNum"</span><span class="token punctuation">,</span>
+    mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>MyMixin<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+// IncreBtn组件
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>increment<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>增加<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+  <span class="token keyword">import</span> MyMixin <span class="token keyword">from</span> <span class="token string">"./MyMixin"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"IncreBtn"</span><span class="token punctuation">,</span>
+    mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>MyMixin<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+// DecreBtn组件省略
+</code></pre>
+</li>
+</ol>
 
             </div>
             <hr>
@@ -4875,7 +4976,7 @@ actions<span class="token punctuation">:</span> <span class="token punctuation">
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">47.8k</span>
+                <span class="white-color">48.1k</span>
             
 
             
